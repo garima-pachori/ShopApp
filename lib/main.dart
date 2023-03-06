@@ -16,6 +16,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
+      //The ChangeNotifierProvider widget is part of the provider package, 
+      //which is a state management solution that provides a convenient 
+      //way to share data between widgets in a Flutter app
       create: (ctx) => Products(),
       child: MaterialApp(
         title: 'MyShop',
