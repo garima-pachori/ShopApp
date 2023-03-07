@@ -18,21 +18,44 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<Product>(context);
+
+
+    //if we write (context, listen: false), so that it doesnt rebuilt everytime
+    //but will only rebuilt certain part that are listening to changes through
+    //wrapping around by consumer & it always listens to changes to the
+    //nearest instance.
+
+
+    // if we dont want the whole app to build when something changes, but only
+    //a specific part of it, then dont use provider with ofcontext
+    //instead wrap the widget with consumer<product> and provide it with 
+    //ctx, product, child
+
+
+    
+
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: GridTile(
         footer: GridTileBar(
           backgroundColor: Colors.black87,
-          leading: IconButton(
-            icon: Icon(
-              product.isFavorite?
-              Icons.favorite:
-              Icons.favorite_border
-            ), 
-            onPressed: () {
-              product.toggleFavouriteStatus();
-            },
-            color: Theme.of(context).accentColor,
+          leading: Consumer<Product>(
+
+        //child is the part that you dont want to change when any other thing
+        //in it changes i.e the widget that you dont want to be rebuild
+
+            builder: (ctx, product, _) => IconButton(
+              icon: Icon(
+                product.isFavorite?
+                Icons.favorite:
+                Icons.favorite_border
+              ), 
+              onPressed: () {
+                product.toggleFavouriteStatus();
+              },
+              color: Theme.of(context).accentColor,
+            ),
           ),
           title: Text(
             product.title,
