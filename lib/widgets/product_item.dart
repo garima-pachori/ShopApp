@@ -42,8 +42,8 @@ class ProductItem extends StatelessWidget {
           backgroundColor: Colors.black87,
           leading: Consumer<Product>(
 
-        //child is the part that you dont want to change when any other thing
-        //in it changes i.e the widget that you dont want to be rebuild
+    //child is the part that you dont want to change when any other thing
+    //in it changes i.e the widget that you dont want to be rebuild
 
             builder: (ctx, product, _) => IconButton(
               icon: Icon(
