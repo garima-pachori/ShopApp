@@ -36,11 +36,17 @@ class Products with ChangeNotifier{
           'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
     ),];
 
-  // By returning a copy of the list, the widget receives a new 
-  // list object that is independent of the original list. 
-  // This ensures that any modifications made to the list in the 
-  // widget do not affect the original list.
+
+    var _showFavouritesOnly=false;
+
+    // By returning a copy of the list, the widget receives a new 
+    // list object that is independent of the original list. 
+    // This ensures that any modifications made to the list in the 
+    // widget do not affect the original list.
   List<Product> get items{
+    if(_showFavouritesOnly){
+      return _items.where((prodItem) => prodItem.isFavorite).toList();
+    }
     return [..._items];
   }
 
@@ -48,6 +54,16 @@ class Products with ChangeNotifier{
     return  _items.firstWhere(
       (prod) => prod.id==id
     );
+  }
+
+  void showFavouritesOnly(){
+    _showFavouritesOnly=true;
+    notifyListeners();
+  }
+
+  void ShowAll(){
+    _showFavouritesOnly=false;
+    notifyListeners();
   }
 
   void addProduct(){
