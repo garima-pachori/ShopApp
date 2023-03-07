@@ -37,17 +37,21 @@ class Products with ChangeNotifier{
     ),];
 
 
-    var _showFavouritesOnly=false;
+    // var _showFavouritesOnly=false;
 
     // By returning a copy of the list, the widget receives a new 
     // list object that is independent of the original list. 
     // This ensures that any modifications made to the list in the 
     // widget do not affect the original list.
   List<Product> get items{
-    if(_showFavouritesOnly){
-      return _items.where((prodItem) => prodItem.isFavorite).toList();
-    }
+    // if(_showFavouritesOnly){
+    //   return _items.where((prodItem) => prodItem.isFavorite).toList();
+    // }
     return [..._items];
+  }
+
+  List<Product> get favouriteItems{
+    return _items.where((prodItem) => prodItem.isFavorite).toList();
   }
 
   Product findById(String id){
@@ -56,15 +60,15 @@ class Products with ChangeNotifier{
     );
   }
 
-  void showFavouritesOnly(){
-    _showFavouritesOnly=true;
-    notifyListeners();
-  }
+  // void showFavouritesOnly(){
+  //   _showFavouritesOnly=true;
+  //   notifyListeners();
+  // }
 
-  void ShowAll(){
-    _showFavouritesOnly=false;
-    notifyListeners();
-  }
+  // void ShowAll(){
+  //   _showFavouritesOnly=false;
+  //   notifyListeners();
+  // }
 
   void addProduct(){
     // _items.add(value);
