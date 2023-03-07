@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app/screens/User_Products.dart';
 import 'package:shop_app/screens/product_detail_screen.dart';
 import 'package:shop_app/screens/product_overview_screen.dart';
 import './Providers/Products.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
       //The ChangeNotifierProvider widget is part of the provider package, 
       //which is a state management solution that provides a convenient 
       //way to share data between widgets in a Flutter app
+
       child: MaterialApp(
         title: 'MyShop',
         theme: ThemeData(
@@ -41,6 +43,7 @@ class MyApp extends StatelessWidget {
         routes: {
           ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
           
+          UserProductScreen.routeName: (ctx) => UserProductScreen(),
         },
       ),
     );
