@@ -48,6 +48,14 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
                 value: FilterOptions.All,
               ),
             ],
+           ),
+           Badge(
+            child:  IconButton(
+              icon: const Icon(
+                Icons.shopping_cart
+                ), 
+              onPressed: () {},
+            ),
            )
         ],
       ),
