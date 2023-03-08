@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../widgets/ProductsGrid.dart';
 import '../Providers/Products.dart';
+import '../Providers/cart.dart';
+import '../widgets/badge.dart';
 
 enum FilterOptions{
   Favourites,
@@ -22,6 +24,7 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
   @override
   Widget build(BuildContext context) {
     final productsContainer=Provider.of<Products>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Shop'),
@@ -49,14 +52,19 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
               ),
             ],
            ),
-           Badge(
-            child:  IconButton(
-              icon: const Icon(
-                Icons.shopping_cart
-                ), 
-              onPressed: () {},
+            Consumer<Cart>(
+              builder: (_,cart, ch) => Badge(
+                child:  ch,
+                value: cart.itemCount.toString(),
+                color: Theme.of(context).accentColor
+                ),
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.shopping_cart
+                    ), 
+                  onPressed: () {  }, 
+              ),
             ),
-           )
         ],
       ),
       body: ProductsGrid(_showFavouritesOnly),
