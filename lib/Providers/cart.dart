@@ -21,6 +21,10 @@ class Cart with ChangeNotifier{
       return {..._items};
     }
 
+    int get itemCount{
+      return _items.length;
+    }
+
     void addItem(
       String productId,
       double price,
@@ -39,15 +43,15 @@ class Cart with ChangeNotifier{
             );
         }
         else{
-          _items.putIfAbsent(
-            productId,
-            () =>CartItem(
-              id: DateTime.now().toString(), 
-              title: title, 
-              quantity: 1, 
-              price: price
-          )
-        );
+            _items.putIfAbsent(
+              productId,
+              () =>CartItem(
+                id: DateTime.now().toString(), 
+                title: title, 
+                quantity: 1, 
+                price: price
+            )
+          );
         }
     }
 }
