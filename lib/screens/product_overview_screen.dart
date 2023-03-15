@@ -30,9 +30,6 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
         appBar: AppBar(
           title: const Text(
             'My Shop',
-            style: TextStyle(
-                fontSize: 12.0,
-            ),
           ),
           actions: <Widget>[
             PopupMenuButton(
