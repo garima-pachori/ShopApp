@@ -18,6 +18,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MultiProvider(
+
+      //MultiProvider is a Flutter widget that allows you to wrap multiple Provider widgets together 
+      //into a single widget tree. This is useful when you need to provide 
+      //multiple dependencies to your widget tree, such as providing data from multiple models or services.
+      
       providers: [
         ChangeNotifierProvider
         (

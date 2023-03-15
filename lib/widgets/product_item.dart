@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/Providers/cart.dart';
 import 'package:shop_app/Providers/product.dart';
 import 'package:shop_app/screens/product_detail_screen.dart';
-import '../Providers/cart.dart';
 
 class ProductItem extends StatelessWidget {
   // final String id;
@@ -20,7 +19,7 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<Product>(context);
-    final cart=Provider.of<Cart>(context,listen: false);
+    final cart=Provider.of<Cart>(context, listen: false);
 
 
     //if we write (context, listen: false), so that it doesnt rebuilt everytime
