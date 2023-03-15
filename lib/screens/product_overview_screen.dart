@@ -25,49 +25,56 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
   Widget build(BuildContext context) {
     final productsContainer=Provider.of<Products>(context, listen: false);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('My Shop'),
-        actions: <Widget>[
-          PopupMenuButton(
-            onSelected: (FilterOptions SelectedValue) {
-              setState(() {
-                if(SelectedValue==FilterOptions.Favourites){
-                _showFavouritesOnly=true;
-              }
-              else{
-                _showFavouritesOnly=false;
-              }
-              });
-            },
-            icon: const Icon(Icons.more_vert,),
-            itemBuilder: (_) => [
-              const PopupMenuItem(
-                value: FilterOptions.Favourites,
-                child: Text('Only Favourites'),
-              ),
-              const PopupMenuItem(
-                value: FilterOptions.All,
-                child: Text('Show All'),
-              ),
-            ],
-           ),
-            Consumer<Cart>(
-              builder: (_, cart , ch) => BadgeWidget(
-                value: cart.itemCount.toString(),
-                color: Theme.of(context).colorScheme.secondary,
-                child:  ch!
-                ),
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.shopping_cart
-                    ), 
-                  onPressed: () {  }, 
-              ),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'My Shop',
+            style: TextStyle(
+                fontSize: 12.0,
             ),
-        ],
+          ),
+          actions: <Widget>[
+            PopupMenuButton(
+              onSelected: (FilterOptions SelectedValue) {
+                setState(() {
+                  if(SelectedValue==FilterOptions.Favourites){
+                  _showFavouritesOnly=true;
+                }
+                else{
+                  _showFavouritesOnly=false;
+                }
+                });
+              },
+              icon: const Icon(Icons.more_vert,),
+              itemBuilder: (_) => [
+                const PopupMenuItem(
+                  value: FilterOptions.Favourites,
+                  child: Text('Only Favourites'),
+                ),
+                const PopupMenuItem(
+                  value: FilterOptions.All,
+                  child: Text('Show All'),
+                ),
+              ],
+             ),
+              Consumer<Cart>(
+                builder: (_, cart , ch) => BadgeWidget(
+                  value: cart.itemCount.toString(),
+                  color: Theme.of(context).colorScheme.secondary,
+                  child:  ch!
+                  ),
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.shopping_cart
+                      ), 
+                    onPressed: () {  }, 
+                ),
+              ),
+          ],
+        ),
+        body: ProductsGrid(_showFavouritesOnly),
       ),
-      body: ProductsGrid(_showFavouritesOnly),
     );
   }
 }
