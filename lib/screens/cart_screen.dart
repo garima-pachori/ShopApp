@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app/Providers/orders.dart';
 import '../Providers/cart.dart';
 import '../widgets/cart_item.dart';
 
@@ -19,9 +20,9 @@ class CartScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
             Card(
-              margin: EdgeInsets.all(15),
+              margin: const EdgeInsets.all(15),
               child: Padding(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -35,34 +36,41 @@ class CartScreen extends StatelessWidget {
                     Chip(
                       label: Text(
                         '\$${cart.totalAmount}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white
                         ),
                       ),
                       backgroundColor: Theme.of(context).primaryColor,
                     ),
                     ElevatedButton(
-                      onPressed: (){}, 
+                      onPressed: (){
+                        Provider.of<Orders>(context, listen: false).addOrder(
+                          cart.items.values.toList(), 
+                          cart.totalAmount
+                        );
+                        cart.Clear();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 0, 119, 16)
+                      ), 
                       child: const Text(
                         'Order Now!',
                         style: TextStyle(
                           color: Colors.white
                         ),
                       ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 0, 119, 16)
-                      ),
                     )
                   ]
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Expanded(child: ListView.builder(
               itemCount: cart.itemCount,
               itemBuilder: (context, i) => 
               CartItem(
                 cart.items.values.toList()[i].id,
+                cart.items.keys.toList()[i],
                 cart.items.values.toList()[i].price,
                 cart.items.values.toList()[i].quantity,
                 cart.items.values.toList()[i].title
