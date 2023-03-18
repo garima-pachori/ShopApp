@@ -12,7 +12,16 @@ class _EditProductScreenState extends State<EditProductScreen> {
   final _priceFocusNode =FocusNode();
   final _descriptionFocusNode=FocusNode();
   final _imageUrlController=TextEditingController();
-  final _imageUrl
+  final _imageUrlFocusNode=FocusNode();
+
+  void _updateImageUrl
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _imageUrlFocusNode.addListener(() { })
+    super.initState();
+  }
   //focus nodes leads to memory leakage, so we gotta remove it before moving further
 
   @override
@@ -20,6 +29,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
     // TODO: implement dispose
     _priceFocusNode.dispose();
     _descriptionFocusNode.dispose();
+    _imageUrlController.dispose();
     _imageUrlController.dispose();
     super.dispose();
   }
@@ -100,6 +110,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         keyboardType: TextInputType.url,
                         textInputAction: TextInputAction.done,
                         controller: _imageUrlController,
+                        focusNode: _imageUrlFocusNode,
                     ),
                   )
                 ],
