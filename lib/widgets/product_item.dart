@@ -71,12 +71,18 @@ class ProductItem extends StatelessWidget {
                 product.title
                 );
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text(
+                   SnackBar(
+                    content: const Text(
                       'Added Item to cart!',
                       textAlign: TextAlign.center,
                     ),
-                    duration: Duration(seconds: 2),
+                    duration: const Duration(seconds: 2),
+                    action: SnackBarAction(
+                      label: 'UNDO', 
+                      onPressed: (){
+                        cart.removeSingleItem(product.id);
+                      }
+                    )
                   ),
       
                 );
@@ -84,7 +90,7 @@ class ProductItem extends StatelessWidget {
             icon: const Icon(
               Icons.shopping_cart
             ),
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).colorScheme.secondary,
             ),
         ),
         child: GestureDetector(
