@@ -12,14 +12,14 @@ class ProductDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ProductId = ModalRoute.of(context)?.settings.arguments as String;
+    final ProductId = ModalRoute.of(context)?.settings.arguments as String?;
     final LoadedProduct=Provider.of<Products>(
         context, 
         listen: false
         //when i dont want to make changes to the ui or rebuilt the app
         //when any sort of changes again
         //then we set listen to false
-      ).findById(ProductId);
+      ).findById(ProductId!);
     return Scaffold(
       appBar: AppBar(
         title: Text(LoadedProduct.title),
