@@ -43,6 +43,7 @@ class Products with ChangeNotifier{
     // list object that is independent of the original list. 
     // This ensures that any modifications made to the list in the 
     // widget do not affect the original list.
+    
   List<Product> get items{
     // if(_showFavouritesOnly){
     //   return _items.where((prodItem) => prodItem.isFavorite).toList();

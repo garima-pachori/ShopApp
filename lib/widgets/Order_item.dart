@@ -44,7 +44,7 @@ class _OrderItemState extends State<OrderItem> {
             ),
           ),
           if(_expanded)  Container(
-            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
             height: min(widget.order.products.length * 20 + 10, 150),
             child: ListView(
               children: widget.order.products
@@ -59,7 +59,7 @@ class _OrderItemState extends State<OrderItem> {
                         fontWeight: FontWeight.bold
                       ),
                     ),
-                    Divider(),
+                    const Divider(),
                      Text(
                       '${prod.quantity}x   \$${prod.price}',
                       style: const TextStyle(

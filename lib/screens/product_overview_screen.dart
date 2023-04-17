@@ -33,7 +33,7 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'My Shop',
+            'Shop App',
           ),
           actions: <Widget>[
             PopupMenuButton(
@@ -76,7 +76,7 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
               ),
           ],
         ),
-        drawer: Appdrawer(),
+        drawer: const Appdrawer(),
         body: ProductsGrid(_showFavouritesOnly),
       ),
     );

@@ -48,7 +48,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'MyShop',
         theme: ThemeData(
-          fontFamily: 'Lato', colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green).copyWith(secondary: const Color.fromARGB(255, 225, 228, 39)),
+          fontFamily: 'Lato', 
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green).
+            copyWith(secondary: const Color.fromARGB(255, 225, 228, 39)),
         ),
         home:  ProductOverviewScreen(),
         routes: {

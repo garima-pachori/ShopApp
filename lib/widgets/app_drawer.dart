@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/screens/edit_product.dart';
 import '../screens/product_detail_screen.dart';
 import '../screens/orders_screen.dart';
 
@@ -37,7 +38,7 @@ class Appdrawer extends StatelessWidget {
             leading: const Icon(Icons.edit),
             title: const Text('Manage Products'),
             onTap: (){
-              Navigator.of(context).pushReplacementNamed(ProductDetailScreen.routeName);
+              Navigator.of(context).pushReplacementNamed(EditProductScreen.routeName);
             },
           )
         ],
