@@ -15,7 +15,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
   final _imageUrlController=TextEditingController();
   final _imageUrlFocusNode=FocusNode();
   final _form=GlobalKey<FormState>();
-  final _editedProduct=
+  var _editedProduct=
     Product(
         id: null, 
         title: '', 
@@ -23,8 +23,6 @@ class _EditProductScreenState extends State<EditProductScreen> {
         price: 0, 
         imageURL: ''
         );
-
-
 
 
   @override
@@ -84,6 +82,14 @@ class _EditProductScreenState extends State<EditProductScreen> {
                 onFieldSubmitted: (_){
                   FocusScope.of(context).requestFocus(_priceFocusNode);
                 },
+                onSaved: (value) {
+                  _editedProduct = Product(
+                    id: null, 
+                    title: value!, 
+                    description: _editedProduct.description, 
+                    price: _editedProduct.price, 
+                    imageURL: _editedProduct.imageURL);
+                },
               ),
               TextFormField(
                 decoration: const InputDecoration(
@@ -95,6 +101,14 @@ class _EditProductScreenState extends State<EditProductScreen> {
                 onFieldSubmitted: (_){
                   FocusScope.of(context).requestFocus(_descriptionFocusNode);
                 },
+                onSaved: (value) {
+                  _editedProduct = Product(
+                    id: null, 
+                    title: _editedProduct.title, 
+                    description: _editedProduct.description, 
+                    price: double.parse(value!), 
+                    imageURL: _editedProduct.imageURL);
+                },
               ),
               TextFormField(
                 decoration: const InputDecoration(
@@ -103,6 +117,14 @@ class _EditProductScreenState extends State<EditProductScreen> {
                 maxLines: 3,
                 keyboardType: TextInputType.multiline,
                 focusNode: _descriptionFocusNode,
+                onSaved: (value) {
+                  _editedProduct = Product(
+                    id: null, 
+                    title: _editedProduct.title,
+                    description: value!, 
+                    price: _editedProduct.price, 
+                    imageURL: _editedProduct.imageURL);
+                },
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -143,6 +165,14 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         onFieldSubmitted: (_){
                           _saveForm();
                         } ,
+                        onSaved: (value) {
+                          _editedProduct = Product(
+                            id: null, 
+                            title: _editedProduct.title, 
+                            description: _editedProduct.description, 
+                            price: _editedProduct.price, 
+                            imageURL: value!);
+                        },
                     ),
                   )
                 ],
